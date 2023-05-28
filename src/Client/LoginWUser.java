@@ -27,6 +27,7 @@ public class LoginWUser extends JFrame {
 	public JButton btnNewButton_1_1 = new JButton("Back");
 	//ConnectDatabase conDB = new ConnectDatabase();
 	public JButton btnNewButton_1 = new JButton("Login");
+	public JPasswordField jpassWord;
 
 	/**
 	 * Launch the application.
@@ -53,7 +54,7 @@ public class LoginWUser extends JFrame {
 		this.setTitle("Login with user!");
 		this.setIconImage((Toolkit.getDefaultToolkit().createImage(LoginWUser.class.getResource("/Image/top_icon_loginU.jpg"))));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 400);
+		setBounds(100, 100, 500, 450);
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 255, 251));
@@ -77,20 +78,44 @@ public class LoginWUser extends JFrame {
 		
 		JLabel lblNewLabel_3_1 = new JLabel("User Name:");
 		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_3_1.setBounds(47, 187, 119, 34);
+		lblNewLabel_3_1.setBounds(47, 174, 119, 34);
 		contentPane.add(lblNewLabel_3_1);
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
-		textField_1.setBounds(184, 188, 243, 41);
+		textField_1.setBounds(184, 175, 243, 41);
 		contentPane.add(textField_1);
 		
+		JLabel lblNewLabel_3_2 = new JLabel("Password:");
+		lblNewLabel_3_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_3_2.setBounds(47, 241, 119, 34);
+		contentPane.add(lblNewLabel_3_2);
+		
+		jpassWord = new JPasswordField();
+		jpassWord.setColumns(10);
+		jpassWord.setBounds(184, 242, 243, 41);
+		contentPane.add(jpassWord);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("Show Pass");
+		chckbxNewCheckBox.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if(chckbxNewCheckBox.isSelected()) {
+					jpassWord.setEchoChar((char)0);
+				} else {
+					jpassWord.setEchoChar('*');
+				}
+			}
+		});
+		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		chckbxNewCheckBox.setBackground(new Color(255, 255, 251));
+		chckbxNewCheckBox.setBounds(184, 290, 99, 23);
+		contentPane.add(chckbxNewCheckBox);
 		
 		
 		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnNewButton_1.setForeground(new Color(0, 0, 0));
 		btnNewButton_1.setBackground(new Color(87, 171, 255));
-		btnNewButton_1.setBounds(245, 279, 107, 41);
+		btnNewButton_1.setBounds(245, 337, 107, 41);
 		contentPane.add(btnNewButton_1);
 		
 		
@@ -98,8 +123,17 @@ public class LoginWUser extends JFrame {
 		btnNewButton_1_1.setForeground(new Color(128, 0, 0));
 		btnNewButton_1_1.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnNewButton_1_1.setBackground(new Color(255, 240, 240));
-		btnNewButton_1_1.setBounds(128, 279, 107, 41);
+		btnNewButton_1_1.setBounds(125, 337, 107, 41);
 		contentPane.add(btnNewButton_1_1);
+	}
+	
+	
+	public String getPass(char[] pass) {
+		String p = "";
+		for (char x:pass) {
+			p+= x;
+		}
+		return p;
 	}
 
 }

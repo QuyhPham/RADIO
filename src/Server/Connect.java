@@ -14,6 +14,8 @@ import java.awt.Font;
 import java.awt.Toolkit;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Connect extends JFrame {
 
@@ -60,6 +62,11 @@ public class Connect extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		JButton btnConnect = new JButton("Connect");
+		btnConnect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblNewLabel.setText("Connected!");
+			}
+		});
 		btnConnect.setForeground(new Color(128, 0, 0));
 		btnConnect.setBackground(new Color(255, 185, 185));
 		btnConnect.setFont(new Font("Tahoma", Font.PLAIN, 23));
@@ -67,6 +74,11 @@ public class Connect extends JFrame {
 		contentPane.add(btnConnect);
 		
 		JButton btnDisconnect = new JButton("Disconnect");
+		btnDisconnect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblNewLabel.setText("Connection!");
+			}
+		});
 		btnDisconnect.setBackground(new Color(213, 213, 213));
 		btnDisconnect.setFont(new Font("Tahoma", Font.PLAIN, 23));
 		btnDisconnect.setBounds(233, 126, 155, 59);

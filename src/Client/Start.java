@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.BevelBorder;
 
-public class Login_Signup extends JFrame {
+public class Start extends JFrame {
 
 	private JPanel contentPane;
 	public JButton btnAdmin = new JButton("Login with Admin");
@@ -42,10 +42,10 @@ public class Login_Signup extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Login_Signup() {
+	public Start() {
 		setForeground(new Color(128, 0, 0));
 		this.setTitle("HOME");
-		this.setIconImage((Toolkit.getDefaultToolkit().createImage(Login_Signup.class.getResource("/Image/TopHome.png"))));
+		this.setIconImage((Toolkit.getDefaultToolkit().createImage(Start.class.getResource("/Image/TopHome.png"))));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 600);
 		setResizable(false);
@@ -104,7 +104,7 @@ public class Login_Signup extends JFrame {
 		
 		JLabel lbImage = new JLabel(new ImageIcon( new ImageIcon(
 				Toolkit.getDefaultToolkit().getImage(
-						Login_Signup.class.getResource("/Image/Logo_Home.png")
+						Start.class.getResource("/Image/Logo_Home.png")
 						)
 				).getImage().getScaledInstance(507, 563, Image.SCALE_DEFAULT)));
 		lbImage.setBounds(2, 2, 505, 560);

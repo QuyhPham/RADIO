@@ -3,6 +3,8 @@ package ClientController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import Client.Approve;
 import Client.BlogAdmin;
 import Client.BlogUser;
@@ -13,11 +15,11 @@ import Client.HomeUser;
 import Client.IconBlog;
 import Client.LoginWAdmin;
 import Client.LoginWUser;
-import Client.Login_Signup;
 import Client.SignUp;
+import Client.Start;
 
 public class Main {
-	static Login_Signup ls = new Login_Signup();
+	static Start ls = new Start();
     static SignUp si = new SignUp();
     static LoginWAdmin lowa = new LoginWAdmin();
 	static LoginWUser lowu = new LoginWUser();
@@ -36,16 +38,34 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-//		controllerHome();
-//		controllerLogin();
-//		controllerSignup();
+		controllerHome();
+		controllerLogin();
+		controllerSignup();
+		controllerLienket();
 		controllerAdmin();
-//		controllerUser();
+		controllerUser();
 		
-//		ls.setVisible(true);
-		ha.setVisible(true);
+		ls.setVisible(true);
+//		ha.setVisible(true);
 //		hu.setVisible(true);
 		
+	}
+	
+	
+	public static void controllerLienket() {
+		
+		// Dang nhap admin roi chuyen sang homeadmin
+		lowa.btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lowa.setVisible(false);
+				ha.setVisible(true);
+				
+			}
+		});
+		
+		
+//		
+				
 	}
 	
 	
@@ -90,6 +110,31 @@ public class Main {
 						ls.setVisible(true);
 					}
 				});
+				
+				
+				//nhấn vào nút Login ở trang Login with user! thì đến trang HomeUser
+				lowa.btnNewButton_1.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						String Username = lowa.textField_1.getText();
+						String Password = lowa.getPass(lowa.jpassWord.getPassword());
+					     
+//					    String Position =  lowa.checkLoginM(Username, Password);
+//					    
+//				
+//						 if ( Position.equals("Admin")){
+//							ha.setVisible(true);
+//							ha.setLocationRelativeTo(null);
+//							
+//							
+//						} else {
+//							JOptionPane.showConfirmDialog(null, "You haven't position!");
+//						}
+						ha.setVisible(true);
+						lowa.textField_1.setText("");
+						lowa.jpassWord.setText("");
+						lowa.setVisible(false);
+					}
+				});
 		
 				
 		//------------  2. Cuối cùng là User: ------------------------------
@@ -101,6 +146,30 @@ public class Main {
 						ls.setVisible(true);
 					}
 				});
+				
+				//nhấn vào nút Login ở trang Login with user! thì đến trang HomeUser
+				lowu.btnNewButton_1.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						String Username = lowu.textField_1.getText();
+						String Password = lowu.getPass(lowu.jpassWord.getPassword());
+					     
+//					    String Position =  lowu.checkLoginC(Username, Password);
+//					    
+//				
+//						 if ( Position.equals("User")){
+//							hu.setVisible(true);
+//							hu.setLocationRelativeTo(null);
+//							
+//							
+//						} else {
+//							JOptionPane.showConfirmDialog(null, "You haven't position!");
+//						}
+						hu.setVisible(true);
+						lowu.textField_1.setText("");
+						lowu.jpassWord.setText("");
+						lowu.setVisible(false);
+					}
+				});
 		
 	}
 	
@@ -110,8 +179,27 @@ public class Main {
 		//nhấn vào nút Back ở trang SignUp thì trở về trang Login_Signup
 		si.btnNewButton_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				si.setVisible(false);
-				ls.setVisible(true);
+                    if ( JOptionPane.showConfirmDialog(null, "Any information will not be saved. Do you still want to get out?") == 0) {
+					
+					si.setVisible(false);
+					ls.setVisible(true);
+					
+				}
+				
+			}
+		});
+		
+		si.btnSignUp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (si.checkSignUp()) {
+					si.setVisible(false);
+					
+					lowu.setVisible(true);
+				} 
+				
+				
+				
 			}
 		});
 		
@@ -124,8 +212,10 @@ public class Main {
 		//nhấn vào Log out ở thanh menu thì quay về trang Login_Signup	
 		ha.Logout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ha.setVisible(false);
-				ls.setVisible(true);
+				if ( JOptionPane.showConfirmDialog(null, "Are you sure you want to out?") == 0) {
+					ha.setVisible(false);
+					ls.setVisible(true);
+				}
 			}
 		});
 		
@@ -221,8 +311,10 @@ public class Main {
 		//nhấn vào Log out ở thanh menu thì quay về trang Login_Signup	
 		hu.Logout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				hu.setVisible(false);
-				ls.setVisible(true);
+				if ( JOptionPane.showConfirmDialog(null, "Are you sure you want to out?") == 0) {
+					hu.setVisible(false);
+					ls.setVisible(true);
+				}
 			}
 		});
 		
